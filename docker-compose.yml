@@ -11,6 +11,18 @@ services:
       - .:/usr/src/app
     networks:
       - sit
+  auth:
+    build:
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development
+    command: pnpm run start:dev auth
+    ports:
+      - '3001:3001'
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - sit
   mongo:
     image: mongo
     networks:
