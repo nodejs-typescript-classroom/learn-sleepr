@@ -9,13 +9,16 @@ dependencies:
     version: 2.3.1(@nestjs/common@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
   '@nestjs/core':
     specifier: ^9.0.0
-    version: 9.0.0(@nestjs/common@9.0.0)(@nestjs/platform-express@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
+    version: 9.0.0(@nestjs/common@9.0.0)(@nestjs/microservices@9.0.0)(@nestjs/platform-express@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
   '@nestjs/jwt':
     specifier: ^10.0.3
     version: 10.0.3(@nestjs/common@9.0.0)
   '@nestjs/mapped-types':
     specifier: '*'
     version: 0.0.1(class-transformer@0.3.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)
+  '@nestjs/microservices':
+    specifier: 9.0.0
+    version: 9.0.0(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
   '@nestjs/mongoose':
     specifier: ^9.2.2
     version: 9.2.2(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)(mongoose@7.0.4)(reflect-metadata@0.1.13)(rxjs@7.2.0)
@@ -80,7 +83,7 @@ devDependencies:
     version: 9.0.0(chokidar@3.5.3)(typescript@4.7.4)
   '@nestjs/testing':
     specifier: ^9.0.0
-    version: 9.0.0(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)(@nestjs/platform-express@9.0.0)
+    version: 9.0.0(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)(@nestjs/microservices@9.0.0)(@nestjs/platform-express@9.0.0)
   '@types/bcryptjs':
     specifier: ^2.4.2
     version: 2.4.2
@@ -930,7 +933,7 @@ packages:
       uuid: 9.0.0
     dev: false
 
-  /@nestjs/core@9.0.0(@nestjs/common@9.0.0)(@nestjs/platform-express@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0):
+  /@nestjs/core@9.0.0(@nestjs/common@9.0.0)(@nestjs/microservices@9.0.0)(@nestjs/platform-express@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0):
     resolution: {integrity: sha512-Ib25JrYQf5ICro19FBytoMpMQicanC4HG3goPBSqsolu+AhVzSU0OhDwmmiDy3aHgmheFnNEEdUH+Gh5Rm2cNw==}
     requiresBuild: true
     peerDependencies:
@@ -949,6 +952,7 @@ packages:
         optional: true
     dependencies:
       '@nestjs/common': 9.0.0(class-transformer@0.3.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
+      '@nestjs/microservices': 9.0.0(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
       '@nestjs/platform-express': 9.0.0(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)
       '@nuxtjs/opencollective': 0.3.2
       fast-safe-stringify: 2.1.1
@@ -984,6 +988,49 @@ packages:
       reflect-metadata: 0.1.13
     dev: false
 
+  /@nestjs/microservices@9.0.0(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0):
+    resolution: {integrity: sha512-VMksVX4T+uBM3/Rc3xoOYtqI3zpVclC3+0IbioOPGixg6Ywa5lnRQzFdFLBJNAFsiwrEIVFGrB7Lv8CEneQURA==}
+    peerDependencies:
+      '@grpc/grpc-js': '*'
+      '@nestjs/common': ^9.0.0
+      '@nestjs/core': ^9.0.0
+      '@nestjs/websockets': ^9.0.0
+      amqp-connection-manager: '*'
+      amqplib: '*'
+      cache-manager: '*'
+      ioredis: '*'
+      kafkajs: '*'
+      mqtt: '*'
+      nats: '*'
+      reflect-metadata: ^0.1.12
+      rxjs: ^7.1.0
+    peerDependenciesMeta:
+      '@grpc/grpc-js':
+        optional: true
+      '@nestjs/websockets':
+        optional: true
+      amqp-connection-manager:
+        optional: true
+      amqplib:
+        optional: true
+      cache-manager:
+        optional: true
+      ioredis:
+        optional: true
+      kafkajs:
+        optional: true
+      mqtt:
+        optional: true
+      nats:
+        optional: true
+    dependencies:
+      '@nestjs/common': 9.0.0(class-transformer@0.3.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
+      '@nestjs/core': 9.0.0(@nestjs/common@9.0.0)(@nestjs/microservices@9.0.0)(@nestjs/platform-express@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
+      iterare: 1.2.1
+      reflect-metadata: 0.1.13
+      rxjs: 7.2.0
+      tslib: 2.4.0
+
   /@nestjs/mongoose@9.2.2(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)(mongoose@7.0.4)(reflect-metadata@0.1.13)(rxjs@7.2.0):
     resolution: {integrity: sha512-szNuSUCwwbQSSeiTh8+tZ9fHV4nuzHwBDROb0hX0s7crwY15TunCfwyKbB2XjqkEQWUAasDeCBuKOJSL9N6tTg==}
     peerDependencies:
@@ -994,7 +1041,7 @@ packages:
       rxjs: ^7.0.0
     dependencies:
       '@nestjs/common': 9.0.0(class-transformer@0.3.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
-      '@nestjs/core': 9.0.0(@nestjs/common@9.0.0)(@nestjs/platform-express@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
+      '@nestjs/core': 9.0.0(@nestjs/common@9.0.0)(@nestjs/microservices@9.0.0)(@nestjs/platform-express@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
       mongoose: 7.0.4
       reflect-metadata: 0.1.13
       rxjs: 7.2.0
@@ -1017,7 +1064,7 @@ packages:
       '@nestjs/core': ^9.0.0
     dependencies:
       '@nestjs/common': 9.0.0(class-transformer@0.3.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
-      '@nestjs/core': 9.0.0(@nestjs/common@9.0.0)(@nestjs/platform-express@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
+      '@nestjs/core': 9.0.0(@nestjs/common@9.0.0)(@nestjs/microservices@9.0.0)(@nestjs/platform-express@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
       body-parser: 1.20.0
       cors: 2.8.5
       express: 4.18.1
@@ -1041,7 +1088,7 @@ packages:
       - chokidar
     dev: true
 
-  /@nestjs/testing@9.0.0(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)(@nestjs/platform-express@9.0.0):
+  /@nestjs/testing@9.0.0(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)(@nestjs/microservices@9.0.0)(@nestjs/platform-express@9.0.0):
     resolution: {integrity: sha512-lBBzZvJWaYutYC1wOEKf4KOis/wxudBX0pVLZxzHmtbkeC2EQgQCbyKA88m1R9QeYTt9CmVMg4eyb+WeOADZiQ==}
     peerDependencies:
       '@nestjs/common': ^9.0.0
@@ -1055,7 +1102,8 @@ packages:
         optional: true
     dependencies:
       '@nestjs/common': 9.0.0(class-transformer@0.3.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
-      '@nestjs/core': 9.0.0(@nestjs/common@9.0.0)(@nestjs/platform-express@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
+      '@nestjs/core': 9.0.0(@nestjs/common@9.0.0)(@nestjs/microservices@9.0.0)(@nestjs/platform-express@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
+      '@nestjs/microservices': 9.0.0(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)(reflect-metadata@0.1.13)(rxjs@7.2.0)
       '@nestjs/platform-express': 9.0.0(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)
       tslib: 2.4.0
     dev: true
