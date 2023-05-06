@@ -1,12 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateReservationDto } from './dto/create-reservation.dto';
 import { UpdateReservationDto } from './dto/update-reservation.dto';
 import { ReservationsRepository } from './reservations.repository';
+import { PAYMENT_SERVICE } from '@app/shared';
+import { ClientProxy } from '@nestjs/microservices';
 
 @Injectable()
 export class ReservationsService {
   constructor(
     private readonly reservationRespository: ReservationsRepository,
+    @Inject(PAYMENT_SERVICE) payementService: ClientProxy,
   ) {}
   create(createReservationDto: CreateReservationDto, userId: string) {
     return this.reservationRespository.create({
@@ -31,7 +34,7 @@ export class ReservationsService {
     );
   }
 
-  remove(_id: string) {
+  async remove(_id: string) {
     return this.reservationRespository.findOneAndDelete({ _id });
   }
 }
