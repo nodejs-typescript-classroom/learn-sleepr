@@ -17,3 +17,9 @@ spec:
       containers:
       - image: asia-east1-docker.pkg.dev/sleepr-386417/auth/production
         name: auth
+        env:
+         - name: MONGO_URI
+           valueFrom:
+             secretKeyRef:
+                name: mongodb
+                key: connectionString 
