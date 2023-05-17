@@ -15,5 +15,10 @@ spec:
         app: notifications
     spec:
       containers:
-      - image: asia-east1-docker.pkg.dev/sleepr-386417/notifications/production
-        name: notifications
+        - image: asia-east1-docker.pkg.dev/sleepr-386417/notifications/production
+          name: notifications
+          env:
+            - name: PORT
+              value: "3000"
+          ports:
+            - containerPort: 3000

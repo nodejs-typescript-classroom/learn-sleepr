@@ -15,11 +15,24 @@ spec:
         app: reservations
     spec:
       containers:
-      - image: asia-east1-docker.pkg.dev/sleepr-386417/reservations/production
-        name: reservations
-        env:
-         - name: MONGO_URI
-           valueFrom:
-             secretKeyRef:
-                name: mongodb
-                key: connectionString
+        - image: asia-east1-docker.pkg.dev/sleepr-386417/reservations/production
+          name: reservations
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                    name: mongodb
+                    key: connectionString
+            - name: PORT
+              value: "3004"
+            - name: AUTH_HOST
+              value: auth
+            - name: AUTH_PORT
+              value: "3002"
+            - name: PAYMENT_HOST
+              value: payments
+            - name: PAYMENT_PORT
+              value: "3003"
+          ports:
+            - containerPort: 3004
+         
