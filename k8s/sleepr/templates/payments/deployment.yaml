@@ -27,7 +27,7 @@ spec:
             - name: STRIPE_SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                    name: stripe
-                    key: apiKey
+                  name: stripe
+                  key: apiKey
           ports:
             - containerPort: 3001
